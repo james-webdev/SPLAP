@@ -1,0 +1,14 @@
+{# templates/splap/index.html.twig #}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button type="submit">Save</button>
+{{ form_end(form) }}
+
+{% for savingsGoal in savingsGoals %}
+    <div>
+        <h2>{{ savingsGoal.name }}</h2>
+        <p>Target: {{ savingsGoal.target }}</p>
+        <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
+        <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
+    </div>
+{% endfor %}
