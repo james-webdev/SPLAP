@@ -1,5 +1,24 @@
 version: "3.8"
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: splapp_image
+    volumes:
+      - /Users/jamesroe/Desktop/SPLAP_2/public:/var/www/html/public
+    container_name: splapp_container
+    depends_on:
+      - mysql
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /Users/jamesroe/Desktop/SPLAP_2/public:/var/www/html/public
+    ports:
+      - "8001:80"
+    depends_on:
+      - app
   mysql:
     image: mariadb:10.8.3
     # Uncomment below when on Mac M1
