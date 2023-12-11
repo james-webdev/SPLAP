@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: OldDockerfile
+      dockerfile: Dockerfile
     image: splapp_image
     volumes:
       - /Users/jamesroe/Desktop/SPLAP_2/public:/var/www/html/public
