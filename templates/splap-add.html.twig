@@ -1,15 +1,22 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 {{ form_start(form) }}
+
+<div>
+
 {{ form_widget(form) }}
 <button type="submit">Save</button>
 {{ form_end(form) }}
 
+</div>
+
+<div class="card-wrapper">
 {% for savingsGoal in savingsGoals %}
-    <div>
+    <div class="card">
         <h2>{{ savingsGoal.name }}</h2>
         <p>Target: {{ savingsGoal.target }}</p>
         <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
         <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
     </div>
 {% endfor %}
+</div>
