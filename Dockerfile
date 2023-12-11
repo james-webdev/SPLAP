@@ -8,8 +8,15 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libxml2-dev \
     libzip-dev \
-    libonig-dev \
-    && docker-php-ext-install pdo_mysql mbstring xml ctype json zip
+    libonig-dev
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install xml
+RUN docker-php-ext-install ctype
+RUN docker-php-ext-install json
+RUN docker-php-ext-install zip
 
 # Set working directory
 WORKDIR /var/www/html
