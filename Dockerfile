@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libonig-dev \
-    && docker-php-ext-install pdo_mysql mbstring xml ctype tokenizer json zip
+    && docker-php-ext-install pdo_mysql mbstring xml ctype json zip
 
 # Set working directory
 WORKDIR /var/www/html
