@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class SPLAPController extends AbstractController
 {
-    #[Route('add', name: 'splap_add')]
+    #[Route('/', name: 'splap_add')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $savingsGoal = new SplapSavingsGoal();
