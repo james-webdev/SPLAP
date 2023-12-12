@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         {% block stylesheets %}
             <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         {% endblock %}
 
     </head>
@@ -21,6 +22,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                     new Sortable(document.getElementById('card-list'), {
                         animation: 150,
+                        handle: '.handle',
                         ghostClass: 'sortable-ghost',
                         dragClass: "sortable-drag",
                     });
