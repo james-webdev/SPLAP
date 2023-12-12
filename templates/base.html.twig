@@ -12,10 +12,20 @@
             <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    new Sortable(document.getElementById('card-list'), {
+                        animation: 150,
+                        ghostClass: 'sortable-ghost',
+                        dragClass: "sortable-drag",
+                    });
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>
