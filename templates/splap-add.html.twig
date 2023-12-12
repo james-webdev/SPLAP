@@ -1,22 +1,25 @@
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+{% extends 'base.html.twig' %}
 
-{{ form_start(form) }}
 
-<div>
+{% block body %}
+<div class="container">
 
-{{ form_widget(form) }}
-<button type="submit">Save</button>
-{{ form_end(form) }}
-
-</div>
-
-<div class="card-wrapper">
-{% for savingsGoal in savingsGoals %}
-    <div class="card">
-        <h2>{{ savingsGoal.name }}</h2>
-        <p>Target: {{ savingsGoal.target }}</p>
-        <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
-        <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
+    <div class="form-wrapper">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Save</button>
+        {{ form_end(form) }}
     </div>
-{% endfor %}
+
+    <div class="card-wrapper">
+    {% for savingsGoal in savingsGoals %}
+        <div class="card">
+            <h2>{{ savingsGoal.name }}</h2>
+            <p>Target: {{ savingsGoal.target }}</p>
+            <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
+            <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
+        </div>
+    {% endfor %}
+    </div>
 </div>
+{% endblock %}
