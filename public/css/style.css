@@ -88,9 +88,9 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    margin-block: 30px;
+    margin-top: 80px;
+    padding-top: 30px;
     padding-bottom: 100px;
-
 }
 
 .card {
