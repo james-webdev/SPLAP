@@ -14,6 +14,7 @@ body {
 .title {
     font-size: 150px;
     font-family: 'Pacifico', cursive;
+    margin-bottom: 0;
 }
 
 .sub-title {
@@ -21,6 +22,7 @@ body {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     word-break: break-word;
+    margin-bottom: 80px;
 }
 
 .form-wrapper {
@@ -106,6 +108,9 @@ button:hover {
 
 p {
     word-break: break-all;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 
@@ -117,6 +122,22 @@ p {
 .handle .fas:hover {
     cursor: move;
 }
+
+.sortable-ghost {
+    opacity: 0.4;
+    background-color: #c5e0f6;
+}
+
+.delete-link {
+
+    text-decoration: none;
+    position: absolute;
+    font-size: 20px;
+    right: 20px;
+    top: 20px;
+    color: black;
+}
+
 
 @media only screen and (max-width: 600px) {
 

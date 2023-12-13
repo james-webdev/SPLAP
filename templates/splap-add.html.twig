@@ -26,6 +26,7 @@
             <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
             <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
             <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
+            <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" class="delete-link"><i class="fas fa-times"></i></i></a>
         </div>
     {% endfor %}
     </div>

@@ -8,6 +8,7 @@
         <title>{% block title %}Splap{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
         {% block stylesheets %}
             <link href="{{ asset('css/style.css') }}" rel="stylesheet">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -27,6 +28,23 @@
                         dragClass: "sortable-drag",
                     });
                 });
+
+                document.querySelectorAll('.delete-link').forEach(function(link) {
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault();
+
+                        fetch(link.href, {
+                            method: 'POST',
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    link.parentElement.remove();
+                                }
+                            });
+                    });
+                });
+
             </script>
         {% endblock %}
     </body>

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\SplapSavingsGoal;
 use App\Form\SplapFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SPLAPController extends AbstractController
 {
@@ -34,5 +35,18 @@ class SPLAPController extends AbstractController
             'form' => $form->createView(),
             'savingsGoals' => $savingsGoals,
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'splap_delete', methods: ['POST'])]
+    public function delete($id, EntityManagerInterface $entityManager): Response
+    {
+        $savingsGoal = $entityManager->getRepository(SplapSavingsGoal::class)->find($id);
+
+        if ($savingsGoal) {
+            $entityManager->remove($savingsGoal);
+            $entityManager->flush();
+        }
+
+        return new JsonResponse(['status' => 'success']);
     }
 }
