@@ -49,4 +49,14 @@ class SPLAPController extends AbstractController
 
         return new JsonResponse(['status' => 'success']);
     }
+
+    #[Route('/card/{id}', name: 'card_detail', methods: ['GET'])]
+    public function cardDetail($id, EntityManagerInterface $entityManager): Response
+    {
+        $savingsGoal = $entityManager->getRepository(SplapSavingsGoal::class)->find($id);
+
+        return $this->render('card_detail.html.twig', [
+            'savingsGoal' => $savingsGoal,
+        ]);
+    }
 }

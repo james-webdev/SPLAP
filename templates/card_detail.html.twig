@@ -1,0 +1,38 @@
+{# templates/card_detail.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card_detail_container">
+        <div class="card_detail">
+            <h2>{{ savingsGoal.name }}</h2>
+            <canvas id="targetChart"></canvas>
+            <!-- Add your other elements here -->
+        </div>
+        <a class="back" href="{{ path('splap_add') }}"><-Back to main page
+        </a>
+    </div>
+{% endblock %}
+
+{% block page_specific_js %}
+    <script>
+        var ctx = document.getElementById('targetChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [0, {{ savingsGoal.target }}],
+                    backgroundColor: ['#5eb5e0', '#f3f3f3']
+                }],
+                labels: [
+                    'Current',
+                    'Target'
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+    </script>
+{% endblock %}

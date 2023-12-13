@@ -19,16 +19,16 @@
     </div>
 
     <div id="card-list" class="card-wrapper">
-    {% for savingsGoal in savingsGoals %}
-        <div class="card">
-            <h2>{{ savingsGoal.name }}</h2>
-            <p>Target: {{ savingsGoal.target }}</p>
-            <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
-            <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
-            <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
-            <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" class="delete-link"><i class="fas fa-times"></i></i></a>
-        </div>
-    {% endfor %}
+        {% for savingsGoal in savingsGoals %}
+            <div class="card" data-link="{{ path('card_detail', {'id': savingsGoal.id}) }}">
+                <h2>{{ savingsGoal.name }}</h2>
+                <p>Target: {{ savingsGoal.target }}</p>
+                <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
+                <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
+                <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
+                <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

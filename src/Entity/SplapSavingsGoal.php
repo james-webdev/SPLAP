@@ -23,6 +23,7 @@ class SplapSavingsGoal
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $duedate = null;
 
+
     public function getId(): ?int
     {
         return $this->id;

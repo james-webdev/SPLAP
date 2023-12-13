@@ -19,6 +19,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     new Sortable(document.getElementById('card-list'), {
@@ -29,17 +30,28 @@
                     });
                 });
 
+                document.querySelectorAll('.card').forEach(function(card) {
+                    card.addEventListener('click', function(event) {
+                        if (!event.target.classList.contains('delete-link')) {
+                            window.location.href = card.dataset.link;
+                        }
+                    });
+                });
+
                 document.querySelectorAll('.delete-link').forEach(function(link) {
                     link.addEventListener('click', function(event) {
                         event.preventDefault();
+                        event.stopPropagation();
 
-                        fetch(link.href, {
+                        var id = link.dataset.id;
+
+                        fetch('/delete/' + id, {
                             method: 'POST',
                         })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {
-                                    var card = link.parentElement;
+                                    var card = link.closest('.card');
                                     card.classList.add('card-deleting');
                                     card.addEventListener('animationend', function() {
                                         card.remove();
@@ -49,7 +61,11 @@
                     });
                 });
 
+
+
             </script>
+
         {% endblock %}
+        {% block page_specific_js %}{% endblock %}
     </body>
 </html>
