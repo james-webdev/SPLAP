@@ -39,7 +39,11 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {
-                                    link.parentElement.remove();
+                                    var card = link.parentElement;
+                                    card.classList.add('card-deleting');
+                                    card.addEventListener('animationend', function() {
+                                        card.remove();
+                                    });
                                 }
                             });
                     });
