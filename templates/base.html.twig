@@ -19,10 +19,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
 
-{#            <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>#}
-
              <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
-{#            <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11/dist/interact.min.js"></script>#}
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -34,69 +31,8 @@
                     });
                 });
 
-                // document.addEventListener('DOMContentLoaded', function() {
-                //     console.log('what a drag');
-                //     dragula([document.getElementById('card-list')], {
-                //         moves: function (el, container, handle) {
-                //             return handle.classList.contains('handle');
-                //         }
-                //     });
-                // });
 
-                // document.addEventListener('DOMContentLoaded', function() {
-                //     let isDragging = false;
-                //
-                //     interact('.handle').draggable({
-                //         // enable inertial throwing
-                //         inertia: true,
-                //         // keep the element within the area of it's parent
-                //         modifiers: [
-                //             interact.modifiers.restrictRect({
-                //                 restriction: 'parent',
-                //                 endOnly: true
-                //             })
-                //         ],
-                //         // enable autoScroll
-                //         autoScroll: true,
-                //
-                //         listeners: {
-                //             // call this function on every dragmove event
-                //             move: function (event) {
-                //                 isDragging = true;
-                //
-                //                 var target = event.target.parentNode,
-                //                     // keep the dragged position in the data-x/data-y attributes
-                //                     x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-                //                     y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-                //
-                //                 // translate the element
-                //                 target.style.webkitTransform =
-                //                     target.style.transform =
-                //                         'translate(' + x + 'px, ' + y + 'px)';
-                //
-                //                 // update the position attributes
-                //                 target.setAttribute('data-x', x);
-                //                 target.setAttribute('data-y', y);
-                //             },
-                //             // call this function on every dragend event
-                //             end: function (event) {
-                //                 // Delay resetting isDragging to allow any click events to check it first
-                //                 setTimeout(() => {
-                //                     isDragging = false;
-                //                 }, 1);
-                //             }
-                //         }
-                //     });
-                //
-                //     // Add a click event listener to the cards
-                //     document.querySelectorAll('.card').forEach(function(card) {
-                //         card.addEventListener('click', function(event) {
-                //             if (!isDragging) {
-                //                 window.location.href = this.dataset.link;
-                //             }
-                //         });
-                //     });
-                // });
+
 
                 document.querySelectorAll('.card').forEach(function(card) {
                     card.addEventListener('click', function(event) {
