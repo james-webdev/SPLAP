@@ -94,7 +94,8 @@ button:hover {
 .back {
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
-    color: #a3c8e2;
+    font-size: 20px;
+   color: black;
 }
 
 .card-wrapper {
