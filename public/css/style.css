@@ -169,19 +169,17 @@ h2 {
     color: black;
 }
 
-@keyframes slideFadeOut {
+@keyframes fadeOut {
     0% {
-        transform: translateX(0);
         opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
         opacity: 0;
     }
 }
 
 .card-deleting {
-    animation: slideFadeOut 1s forwards;
+    animation: fadeOut 0.5s forwards;
 }
 
 .chart {
