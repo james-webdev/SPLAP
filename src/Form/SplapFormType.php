@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\SplapSavingsGoal;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,10 @@ class SplapFormType extends AbstractType
             ->add('name')
             ->add('target')
             ->add('contributedAmount')
-            ->add('duedate')
+            ->add('duedate', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ])
         ;
     }
 
