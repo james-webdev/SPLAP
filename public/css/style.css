@@ -169,19 +169,19 @@ h2 {
     color: black;
 }
 
-@keyframes spinFadeOut {
-    from {
+@keyframes slideFadeOut {
+    0% {
+        transform: translateX(0);
         opacity: 1;
-        transform: scale(1) rotate(0deg);
     }
-    to {
+    100% {
+        transform: translateX(-100%);
         opacity: 0;
-        transform: scale(0.1) rotate(360deg);
     }
 }
 
 .card-deleting {
-    animation: spinFadeOut 0.5s forwards;
+    animation: slideFadeOut 1s forwards;
 }
 
 .chart {
