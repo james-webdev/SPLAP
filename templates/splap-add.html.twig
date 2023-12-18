@@ -20,11 +20,31 @@
 
     <div id="card-list" class="card-wrapper">
         {% for savingsGoal in savingsGoals %}
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var ctx = document.getElementById('targetChart' + {{ loop.index }}).getContext('2d');
+                    var chart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            datasets: [{
+                                data: [{{ savingsGoal.contributedAmount }}, {{ savingsGoal.target }}],
+                                backgroundColor: ['#5eb5e0', '#f3f3f3']
+                            }],
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true
+                        }
+                    });
+                });
+            </script>
             <div class="card" data-link="{{ path('card_detail', {'id': savingsGoal.id}) }}">
+                <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
                 <h2>{{ savingsGoal.name }}</h2>
                 <p>Target: {{ savingsGoal.target }}</p>
                 <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
                 <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
+                <p> Contributed amount: {{ savingsGoal.contributedAmount }}</p>
                 <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
                 <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
             </div>

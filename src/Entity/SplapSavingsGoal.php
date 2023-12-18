@@ -23,6 +23,8 @@ class SplapSavingsGoal
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $duedate = null;
 
+    #[ORM\Column]
+    private ?int $contributedAmount = null;
 
     public function getId(): ?int
     {
@@ -66,6 +68,18 @@ class SplapSavingsGoal
     }
 
 
+    public function getContributedAmount(): ?string
+    {
+        return $this->contributedAmount;
+    }
+
+    public function setContributedAmount(string $contributedAmount): self
+    {
+        $this->contributedAmount = $contributedAmount;
+
+        return $this;
+    }
+
 
     public function getMonthlyContribution(): float
     {
@@ -73,10 +87,12 @@ class SplapSavingsGoal
         $interval = $now->diff($this->duedate);
         $months = $interval->y * 12 + $interval->m;
 
+        $remainingAmount = $this->target - $this->contributedAmount;
+
         if ($months == 0) {
-            return $this->target;
+            return $remainingAmount;
         }
 
-        return $this->target / $months;
+        return $remainingAmount / $months;
     }
 }

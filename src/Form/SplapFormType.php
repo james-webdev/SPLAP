@@ -14,6 +14,7 @@ class SplapFormType extends AbstractType
         $builder
             ->add('name')
             ->add('target')
+            ->add('contributedAmount')
             ->add('duedate')
         ;
     }

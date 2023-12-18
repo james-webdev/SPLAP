@@ -140,7 +140,7 @@ p {
 
 h2 {
     font-family: 'Open Sans', sans-serif;
-    margin-top: 55px;
+    margin-top: 25px;
 }
 
 
@@ -184,9 +184,8 @@ h2 {
     animation: spinFadeOut 0.5s forwards;
 }
 
-#targetChart {
-    height: 400px !important;
-    width: 400px !important;
+.chart {
+    margin-top: 30px;
 }
 
 
