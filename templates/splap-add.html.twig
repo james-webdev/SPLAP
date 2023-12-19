@@ -28,7 +28,9 @@
                         data: {
                             datasets: [{
                                 data: [{{ savingsGoal.contributedAmount }}, {{ savingsGoal.target }}],
-                                backgroundColor: ['#FF6961', '#77DD77']
+                                backgroundColor: ['#C8FACD', '#282828'],
+                                borderWidth: 4,
+                                borderColor: ['#282828']
                             }],
                         },
                         options: {
@@ -39,12 +41,12 @@
                 });
             </script>
             <div class="card" data-link="{{ path('card_detail', {'id': savingsGoal.id}) }}">
-                <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
                 <h2>{{ savingsGoal.name }}</h2>
-                <p>Target: {{ savingsGoal.target }}</p>
-                <p>Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
-                <p>Monthly Contribution: {{ savingsGoal.monthlyContribution }}</p>
-                <p> Contributed amount: {{ savingsGoal.contributedAmount }}</p>
+                <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
+{#                <p>Target: {{ savingsGoal.target }}</p>#}
+                <p class="due-date">Due Date: {{ savingsGoal.duedate|date('Y-m-d') }}</p>
+                <p class="needed">Needed: £{{ savingsGoal.monthlyContribution }}/month</p>
+{#                <p> Contributed amount: {{ savingsGoal.contributedAmount }}</p>#}
                 <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
                 <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
             </div>
