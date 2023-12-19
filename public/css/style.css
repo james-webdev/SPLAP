@@ -41,11 +41,14 @@ form {
     flex-direction: column;
     gap: 10px;
     margin: 0 auto;
+    width: 250px;
+    align-items: center;
 }
 
 
+
+
 label {
-    margin-block: 8px;
     font-weight: bold;
     display: block;
     font-family: 'Roboto', sans-serif;
@@ -55,11 +58,16 @@ label {
     margin: 4px;
 }
 
+#splap_form {
+    max-width: 200px;
+}
+
 input, select, button {
     padding: 5px;
     margin: 5px 0;
     border: 2px solid #5eb5e0;
     border-radius: 4px;
+    width: 90%;
 }
 
 
