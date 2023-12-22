@@ -20,6 +20,7 @@ class SplapFormType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
             ])
+            ->add('color', 'Symfony\Component\Form\Extension\Core\Type\ColorType');
         ;
     }
 

@@ -17,11 +17,15 @@ class SPLAPController extends AbstractController
     #[Route('/', name: 'splap_add')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $color = '#C8FACD';
         $savingsGoal = new SplapSavingsGoal();
         $form = $this->createForm(SplapFormType::class, $savingsGoal);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $color = $request->request->get('color');
+
             $entityManager->persist($savingsGoal);
             $entityManager->flush();
 
@@ -34,6 +38,7 @@ class SPLAPController extends AbstractController
         return $this->render('splap-add.html.twig', [
             'form' => $form->createView(),
             'savingsGoals' => $savingsGoals,
+            'color' => $color,
         ]);
     }
 

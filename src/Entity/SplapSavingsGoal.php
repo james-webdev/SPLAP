@@ -26,6 +26,21 @@ class SplapSavingsGoal
     #[ORM\Column]
     private ?int $contributedAmount = null;
 
+
+    #[ORM\Column]
+    private ?string $color = null;
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
     public function getId(): ?int
     {
         return $this->id;
