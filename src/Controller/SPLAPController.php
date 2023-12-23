@@ -28,6 +28,8 @@ class SPLAPController extends AbstractController
 
             $entityManager->persist($savingsGoal);
             $entityManager->flush();
+            $savingsGoal = new SplapSavingsGoal();
+            $form = $this->createForm(SplapFormType::class, $savingsGoal);
 
         }
 

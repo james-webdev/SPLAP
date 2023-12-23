@@ -16,7 +16,14 @@
 
     </head>
     <body>
+    <div class="container">
+        <div class="title-wrapper">
+            <h1 class="title"><a href="{{ path('splap_add') }}">Splap</a></h1>
+            <h4 class="sub-title">Your simple savings planning app.</h4>
+        </div>
+
         {% block body %}{% endblock %}
+    </div>
         {% block javascripts %}
 
              <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.10.2/Sortable.min.js"></script>
