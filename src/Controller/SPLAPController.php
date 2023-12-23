@@ -64,4 +64,28 @@ class SPLAPController extends AbstractController
             'savingsGoal' => $savingsGoal,
         ]);
     }
+
+    #[Route('/edit/{id}', name: 'splap_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, EntityManagerInterface $entityManager, $id): Response
+    {
+        $savingsGoal = $entityManager->getRepository(SplapSavingsGoal::class)->find($id);
+
+        if (!$savingsGoal) {
+            throw $this->createNotFoundException('The savings goal does not exist');
+        }
+
+        $form = $this->createForm(SplapFormType::class, $savingsGoal);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('splap_add');
+        }
+
+        return $this->render('splap-edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

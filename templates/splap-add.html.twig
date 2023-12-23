@@ -15,12 +15,6 @@
         {{ form_start(form) }}
         {{ form_widget(form) }}
             <button type="submit">Save</button>
-        {% for color in form.color %}
-            <label class="color-option">
-                <input type="radio" name="{{ form.color.vars.full_name }}" value="{{ color.vars.value }}" style="display: none;">
-                <span class="color-circle" style="background-color: {{ color.vars.value }};"></span>
-            </label>
-        {% endfor %}
         {{ form_end(form) }}
     </div>
 
@@ -50,7 +44,7 @@
                 });
             </script>
 
-            <div class="card" data-link="{{ path('card_detail', {'id': savingsGoal.id}) }}">
+            <div class="card" data-link="{{ path('splap_edit', {'id': savingsGoal.id}) }}">
                 <h2>{{ savingsGoal.name }}</h2>
                 <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
 {#                <p>Target: {{ savingsGoal.target }}</p>#}
