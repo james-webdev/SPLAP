@@ -14,7 +14,7 @@ body {
 .title {
     font-size: 150px;
     font-family: 'Pacifico', cursive;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .title a {
@@ -27,13 +27,13 @@ body {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     word-break: break-word;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
 }
 
 .form-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 
 }
 
@@ -49,9 +49,6 @@ form {
     width: 250px;
     align-items: center;
 }
-
-
-
 
 label {
     font-weight: bold;
@@ -92,6 +89,38 @@ button:hover {
     background-color: lightgray;
 }
 
+.add-button {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: inherit;
+    border: rgba(23, 23, 23, 0.85) 2px solid;
+    cursor: pointer;
+    background: #F5F5F5;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width: fit-content;
+}
+
+.add-button:hover {
+    transform: scale(1.02);
+}
+
+
+.edit {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    max-width: fit-content;
+}
 .container {
     max-width: 1400px;
     margin-left: auto;
@@ -115,16 +144,15 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-    margin-top: 80px;
     margin-inline: 30px;
-    padding-top: 30px;
+    padding-top: 50px;
     padding-bottom: 100px;
 }
 
 .card {
     border: black 3px solid;
     cursor: pointer;
-    background: #FFFFFF;
+    background: #F5F5F5;
     padding: 20px 0 35px 0;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

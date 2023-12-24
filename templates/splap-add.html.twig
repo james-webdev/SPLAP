@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-
+{% block sub_title %}<span class="edit">Add</span>{% endblock %}
 
 {% block body %}
-
 
     <div class="form-wrapper">
         {{ form_start(form) }}
@@ -12,42 +11,4 @@
         {{ form_end(form) }}
     </div>
 
-    <div id="card-list" class="card-wrapper">
-        {% for savingsGoal in savingsGoals|reverse %}
-            <script>
-
-                document.addEventListener('DOMContentLoaded', function() {
-                    let color = "{{ savingsGoal.color }}";
-                    var ctx = document.getElementById('targetChart' + {{ loop.index }}).getContext('2d');
-                    var chart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            datasets: [{
-                                data: [{{ savingsGoal.contributedAmount }}, {{ savingsGoal.target - savingsGoal.contributedAmount }}],
-                                backgroundColor: [color, 'rgba(23, 23, 23, 0.85)'],
-                                borderWidth: 3,
-                                borderColor: 'rgba(23, 23, 23, 0.85)'
-                            }],
-                        },
-                        options: {
-                            responsive: true,
-                            aspectRatio: 2,
-                            cutoutPercentage: 80
-                        }
-                    });
-                });
-            </script>
-
-            <div class="card" data-link="{{ path('splap_edit', {'id': savingsGoal.id}) }}">
-                <h2>{{ savingsGoal.name }}</h2>
-                <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
-    {#                <p>Target: {{ savingsGoal.target }}</p>#}
-                <p class="due-date">Due: {{ savingsGoal.duedate|date('d-m-Y') }}</p>
-                <p class="needed">Needed: £{{ savingsGoal.monthlyContribution == savingsGoal.monthlyContribution|round ? savingsGoal.monthlyContribution|round : savingsGoal.monthlyContribution|number_format(2, '.', ',') }}/month</p>
-    {#                <p> Contributed amount: {{ savingsGoal.contributedAmount }}</p>#}
-                <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
-                <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
-            </div>
-        {% endfor %}
-    </div>
 {% endblock %}
