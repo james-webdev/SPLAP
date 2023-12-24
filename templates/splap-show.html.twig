@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<a href="{{ path('splap_add') }}" class="add-button">Add a Splap</a>
+<a href="{{ path('splap_add') }}" class="add-button">Add a Goal</a>
 <div id="card-list" class="card-wrapper">
     {% for savingsGoal in savingsGoals|reverse %}
         <script>
@@ -34,7 +34,7 @@
             <h2>{{ savingsGoal.name }}</h2>
             <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
             {#                <p>Target: {{ savingsGoal.target }}</p>#}
-            <p class="due-date">Due: {{ savingsGoal.duedate|date('d-m-Y') }}</p>
+{#            <p class="due-date">Due: {{ savingsGoal.duedate|date('d-m-Y') }}</p>#}
             <p class="needed">Needed: £{{ savingsGoal.monthlyContribution == savingsGoal.monthlyContribution|round ? savingsGoal.monthlyContribution|round : savingsGoal.monthlyContribution|number_format(2, '.', ',') }}/month</p>
             {#                <p> Contributed amount: {{ savingsGoal.contributedAmount }}</p>#}
             <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
