@@ -101,7 +101,7 @@ button:hover {
     padding: 17px;
     border-radius: 20px;
     max-width: fit-content;
-    border-color: blue;
+    border: solid 1px white;
     color: #fff;
     box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
     transition: all 150ms ease-in-out;
@@ -109,7 +109,6 @@ button:hover {
 
 .add-button:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 10px 0 lightblue inset, 0 0 10px 4px lightblue;
 }
 
 .edit {
@@ -132,6 +131,11 @@ button:hover {
     font-family: 'Roboto', sans-serif;
     max-width: fit-content;
     color: inherit;
+}
+
+.logout, .register-link {
+    color: white;
+    /*text-decoration: none;*/
 }
 
 .register {
