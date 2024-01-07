@@ -13,14 +13,15 @@ class SplapFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('target')
-            ->add('contributedAmount')
+            ->add('name', null, ['label' => 'Name:'])
+            ->add('target', null, ['label' => 'Target:'])
+            ->add('contributedAmount', null, ['label' => 'Contributed so far:'])
             ->add('duedate', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
+                'label' => 'Due date:'
             ])
-            ->add('color', 'Symfony\Component\Form\Extension\Core\Type\ColorType');
+            ->add('color', 'Symfony\Component\Form\Extension\Core\Type\ColorType', ['label' => 'Colour:']);
         ;
     }
 

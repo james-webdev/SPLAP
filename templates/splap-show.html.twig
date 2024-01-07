@@ -1,43 +1,54 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
-<a href="{{ path('splap_add') }}" class="add-button">Add a Goal</a>
-<div id="card-list" class="card-wrapper">
-    {% for savingsGoal in savingsGoals|reverse %}
-        <script>
+    <a href="{{ path('splap_add') }}" class="add-button">Add a Goal</a>
+    <div id="card-list" class="card-wrapper">
+        {% for savingsGoal in savingsGoals|reverse %}
+            <script>
+                function lightenColor(color, percent) {
+                    let num = parseInt(color.replace("#",""), 16),
+                        amt = Math.round(2.55 * percent),
+                        R = (num >> 16) + amt,
+                        B = ((num >> 8) & 0x00FF) + amt,
+                        G = (num & 0x0000FF) + amt;
+                    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
+                }
 
-            document.addEventListener('DOMContentLoaded', function() {
-                let color = "{{ savingsGoal.color }}";
-                var ctx = document.getElementById('targetChart' + {{ loop.index }}).getContext('2d');
-                var chart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        datasets: [{
-                            data: [{{ savingsGoal.contributedAmount }}, {{ savingsGoal.target - savingsGoal.contributedAmount }}],
-                            backgroundColor: [color, 'rgba(23, 23, 23, 0.85)'],
-                            borderWidth: 3,
-                            borderColor: 'rgba(23, 23, 23, 0.85)'
-                        }],
-                    },
-                    options: {
-                        responsive: true,
-                        aspectRatio: 2,
-                        cutoutPercentage: 80
-                    }
+                document.addEventListener('DOMContentLoaded', function() {
+                    let color = "{{ savingsGoal.color }}";
+                    let ctx = document.getElementById('targetChart' + {{ loop.index }}).getContext('2d');
+                    let chart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                                data: [{{ savingsGoal.contributedAmount }}, {{ savingsGoal.target - savingsGoal.contributedAmount }}],
+                                backgroundColor: [color, 'rgba(23, 23, 23, 0.85)'],
+                                borderWidth: 3,
+                                borderColor: 'rgba(23, 23, 23, 0.85)'
+                            }],
+                        },
+                        options: {
+                            responsive: true,
+                            aspectRatio: 2,
+                            cutoutPercentage: 80
+                        }
+                    });
+
+                    let card = document.querySelector('.card[data-color="' + color + '"]');
+                    let lightColor = lightenColor(color, 50);
+                    card.style.backgroundColor = lightColor;
                 });
-            });
-        </script>
+            </script>
 
-        <div class="card" data-link="{{ path('splap_edit', {'id': savingsGoal.id}) }}">
-            <h2>{{ savingsGoal.name }}</h2>
-            <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
-            <p class="needed">Needed: £{{ savingsGoal.monthlyContribution == savingsGoal.monthlyContribution|round ? savingsGoal.monthlyContribution|round : savingsGoal.monthlyContribution|number_format(2, '.', ',') }}/month</p>
-            <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
-            <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
-        </div>
-    {% endfor %}
-</div>
+            <div class="card" data-link="{{ path('splap_edit', {'id': savingsGoal.id}) }}" data-color="{{ savingsGoal.color }}">
+                <h2>{{ savingsGoal.name }}</h2>
+                <canvas class="chart" id="targetChart{{ loop.index }}"></canvas>
+                <p class="needed">Needed: £{{ savingsGoal.monthlyContribution == savingsGoal.monthlyContribution|round ? savingsGoal.monthlyContribution|round : savingsGoal.monthlyContribution|number_format(2, '.', ',') }}/month</p>
+                <span class="handle"> <i class="fas fa-grip-vertical"></i></span>
+                <a href="{{ path('splap_delete', {'id': savingsGoal.id}) }}" data-id="{{ savingsGoal.id }}" class="delete-link"><i class="fas fa-times"></i></a>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
