@@ -101,7 +101,6 @@ button:hover {
     padding: 17px;
     border-radius: 20px;
     max-width: fit-content;
-
     border-color: blue;
     color: #fff;
     box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
@@ -201,6 +200,7 @@ p {
 h2 {
     font-family: 'Open Sans', sans-serif;
     margin-top: 55px;
+    margin-inline: 25px;
     text-align: center;
 }
 
@@ -267,6 +267,10 @@ h2 {
     }
     .sub-title {
         font-size: 20px;
+    }
+
+    .logged-in {
+        font-size: 12px;
     }
 
 }
