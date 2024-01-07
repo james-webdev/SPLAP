@@ -107,14 +107,15 @@ button:hover {
     padding: 17px;
     border-radius: 20px;
     max-width: fit-content;
-    border: solid 1px white;
-    color: #fff;
+    border: solid 2px white;
+    background-color: lightblue;
+    color: rgba(23, 23, 23, 0.85);
     box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
     transition: all 150ms ease-in-out;
 }
 
 .add-button:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .edit {
@@ -167,7 +168,7 @@ button:hover {
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-   color: black;
+    color: black;
 }
 
 .card-wrapper {

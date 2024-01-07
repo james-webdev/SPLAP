@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <a href="{{ path('splap_add') }}" class="add-button">Add a Goal</a>
+    <a href="{{ path('splap_add') }}" class="add-button">Add</a>
     <div id="card-list" class="card-wrapper">
         {% for savingsGoal in savingsGoals|reverse %}
             <script>
@@ -36,7 +36,7 @@
                     });
 
                     let card = document.querySelector('.card[data-color="' + color + '"]');
-                    let lightColor = lightenColor(color, 50);
+                    let lightColor = lightenColor(color, 65);
                     card.style.backgroundColor = lightColor;
                 });
             </script>
