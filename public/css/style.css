@@ -97,20 +97,21 @@ button:hover {
     font-size: 18px;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
-    color: inherit;
-    border: rgba(23, 23, 23, 0.85) 2px solid;
     cursor: pointer;
-    background: #F5F5F5;
     padding: 17px;
     border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-width: fit-content;
+
+    border-color: blue;
+    color: #fff;
+    box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
+    transition: all 150ms ease-in-out;
 }
 
 .add-button:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 10px 0 lightblue inset, 0 0 10px 4px lightblue;
 }
-
 
 .edit {
     display: flex;
