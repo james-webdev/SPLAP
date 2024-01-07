@@ -30,6 +30,22 @@ class SplapSavingsGoal
     #[ORM\Column]
     private ?string $color = null;
 
+    #[ORM\ManyToOne(targetEntity: "App\Entity\User")]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user;
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     public function getColor(): ?string
     {
         return $this->color;

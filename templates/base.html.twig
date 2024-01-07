@@ -17,6 +17,15 @@
     </head>
     <body>
     <div class="container">
+        {% if app.user %}
+            <div class="mb-3 logged-in">
+                <span>
+                You are logged in as {{ app.user.userIdentifier }}.
+                </span>
+                &nbsp;&nbsp;
+                <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
         <div class="title-wrapper">
             <h1 class="title"><a href="{{ path('splap_show') }}">Splap</a></h1>
             <h4 class="sub-title">{% block sub_title %}Your simple savings planning app.{% endblock %}</h4>

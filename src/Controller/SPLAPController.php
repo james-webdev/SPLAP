@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SPLAPController extends AbstractController
 {
 
-    #[Route('/', name: 'splap_show')]
+    #[Route('/show', name: 'splap_show')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $savingsGoals = $entityManager->getRepository(SplapSavingsGoal::class)->findAll();
+        $savingsGoals = $entityManager->getRepository(SplapSavingsGoal::class)->findBy(['user' => $this->getUser()]);
 
         return $this->render('splap-show.html.twig', [
             'savingsGoals' => $savingsGoals,
@@ -26,6 +26,13 @@ class SPLAPController extends AbstractController
     #[Route('/add', name: 'splap_add')]
     public function add(Request $request, EntityManagerInterface $entityManager): Response
     {
+
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $color = '#C8FACD';
         $savingsGoal = new SplapSavingsGoal();
         $form = $this->createForm(SplapFormType::class, $savingsGoal);
@@ -34,6 +41,7 @@ class SPLAPController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $color = $request->request->get('color');
+            $savingsGoal->setUser($this->getUser());
 
             $entityManager->persist($savingsGoal);
             $entityManager->flush();

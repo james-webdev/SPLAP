@@ -120,7 +120,27 @@ button:hover {
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
     max-width: fit-content;
+    color: inherit;
 }
+
+.logged-in {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    max-width: fit-content;
+    color: inherit;
+}
+
+.register {
+    font-size: 18px;
+    font-weight: 500;
+    color: inherit;
+    text-decoration: none;
+}
+
 .container {
     max-width: 1400px;
     margin-left: auto;
