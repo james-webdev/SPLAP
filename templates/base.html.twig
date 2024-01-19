@@ -58,10 +58,17 @@
                     });
                 });
 
+                let cards = document.querySelectorAll('.card');
 
+                cards.forEach(function(card) {
 
+                    if (cards.length === 1) {
+                        card.style.width = '50%';
+                        card.style.margin = '0 auto';
+                    } else {
+                        card.style.width = '100%';
+                    }
 
-                document.querySelectorAll('.card').forEach(function(card) {
                     card.addEventListener('click', function(event) {
                         if (!event.target.classList.contains('delete-link')) {
                             window.location.href = card.dataset.link;
