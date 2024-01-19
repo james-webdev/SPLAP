@@ -116,7 +116,7 @@ button:hover {
 
 .add-button:hover {
     transform: scale(1.05);
-    border: dotted 2px black;
+    border: solid 2px black;
     box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
 }
 
