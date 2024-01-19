@@ -107,16 +107,15 @@ button:hover {
     padding: 17px;
     border-radius: 20px;
     max-width: fit-content;
-    border: solid 2px black;
+    border: solid 2px white;
     background-color: lightblue;
     color: rgba(23, 23, 23, 0.85);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 5px 0 white inset, 0 0 5px 2px white;
     transition: all 150ms ease-in-out;
 }
 
 .add-button:hover {
     transform: scale(1.05);
-    border: solid 2px black;
     box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
 }
 
